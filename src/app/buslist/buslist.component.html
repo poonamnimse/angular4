@@ -1,0 +1,53 @@
+<!--<div class="row">
+    <mat-spinner style="stroke-width: 1%;"></mat-spinner>
+</div>-->
+<div class="container" style="margin-top: 20px">
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let eachbus of busList">
+            <mat-expansion-panel-header style="padding: 35px 24px;">
+                <div class="row" style="width: 100%">
+                    <div class="col-md-4">
+                        <div>{{eachbus.bus_title}}</div>
+                        <div>{{eachbus.bus_type}}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>Departure Time</div>
+                        <div>{{eachbus.departure_time}}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>{{eachbus.available_seat_count}}Seats Available</div>
+                        <div>
+                            <button mat-raised-button color="accent" (click)="expandBusDetail(eachbus.bus_id)">View Bus</button>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <div class="col-md-8 padding-0" style="width: 700px;">
+                    <div style="height: 300px;position: relative;background-color:#ececec;box-shadow: 0 1px 8px #ccc;cursor: pointer">
+                        <div *ngFor="let eachseat of busdetail">
+                            <div *ngIf="!eachseat.selection_status" class="seat"  [ngStyle]="{'position':'absolute','top.px':eachseat.top,'left.px':eachseat.left}" (click)="selectSeat(eachseat)">
+                                <span class="seatcolor">{{eachseat.seat_name}}</span>
+                                <span class="circle" [ngStyle]="{'color':eachseat.seat_color}"></span>
+                            </div>
+                            <div *ngIf="eachseat.selected" class="bsselected" [ngStyle]="{'position':'absolute','top.px':eachseat.top,'left.px':eachseat.left}"  (click)="selectSeat(eachseat)">
+                                <span class="seatcolor">{{eachseat.seat_name}}</span>
+                                <span class="circle" [ngStyle]="{color:eachseat.seat_color}"></span>
+                            </div>
+                            <div *ngIf="eachseat.selection_status" class="bsalreadyselected" [ngStyle]="{'position':'absolute','top.px':eachseat.top,'left.px':eachseat.left}"  (click)="selectSeat(eachseat)">
+                                <span class="seatcolor">{{eachseat.seat_name}}</span>
+                                <span class="circle" [ngStyle]="{'color':eachseat.seat_color}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="background-color:#ececec">
+                    <h1>This Is awesome</h1>
+                </div>
+            </div>
+            <div class="row" style="text-align: right">
+                <button mat-raised-button color="primary" (click)=openRightPanel()>Continue</button>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

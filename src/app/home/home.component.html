@@ -1,0 +1,8 @@
+<img src="../../assets/banner.jpg" style="width:100%"/>
+<app-service></app-service>
+<div>{{sentense}}</div>
+<div *ngFor="let hero of heroes"
+    [@heroState]="hero.state"
+    (click)="toggleState(hero)" style="width:200px;margin-left:200px">
+    {{hero.name}}
+</div>
